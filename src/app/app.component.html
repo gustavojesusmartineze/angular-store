@@ -1,3 +1,9 @@
+<h1>Events</h1>
+<button (click)="toggleButton()">Toggle Button</button>
+<button [disabled]="buttonDisabled">Send</button>
+<button (click)="increaseAge()">Increase Age</button>
+<p>Age: {{ person.age }}</p>
+<hr>
 <h1>Properties binding</h1>
 <button [disabled]="buttonDisabled">Send</button>
 <input type="text" [value]="person.name" id="">

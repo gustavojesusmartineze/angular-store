@@ -17,4 +17,13 @@ export class AppComponent {
     age: 32,
     avatar: 'https://source.unsplash.com/random'
   };
+
+  public toggleButton() {
+    console.log('The form was sent');
+    this.buttonDisabled = !this.buttonDisabled;
+  }
+
+  public increaseAge() {
+    this.person.age += 1;
+  }
 }
