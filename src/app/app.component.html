@@ -1,12 +1,97 @@
-<h1>*ngFor of Objects</h1>
+<h1>Forms</h1>
+<form (ngSubmit)="onRegister()" #myFormGustavo="ngForm">
+  <div class="input-group">
+    <label for="">Name</label>
+    <input type="text" required id="name" name="name" [(ngModel)]="register.name"/>
+    <p>Error messages</p>
+  </div>
+  <div class="input-group">
+    <label for="">Email</label>
+    <input type="email" required id="email" name="email" [(ngModel)]="register.email"/>
+    <p>Error messages</p>
+  </div>
+  <div class="input-group">
+    <label for="">Password</label>
+    <input type="password" required id="password" name="password" [(ngModel)]="register.password"/>
+    <p>Error messages</p>
+  </div>
+  <button [disabled]="myFormGustavo.invalid" type="submit" >Register</button>
+  <button type="button" >Action</button>
+</form>
+<hr />
+<h1>NgClass and NgStyle</h1>
+<input type="text" required #nameInput1="ngModel" [(ngModel)]="person.name"/>
+<!-- <hr class="line-error"
+  [class.valid]="nameInput1.valid"
+  [class.invalid]="nameInput1.invalid"
+/> -->
+<hr class="line-error"
+  [ngClass]="{
+    'valid': nameInput1.valid,
+    'invalid': nameInput1.invalid
+  }"
+/>
+<p class="message-error" [class.invalidClassName]="nameInput1.invalid">
+  The field is required
+</p>
+
 <div>
+  <div>
+    <input type="number" [(ngModel)]="box.width"/>
+    <input type="number" [(ngModel)]="box.height"/>
+    <input type="color" [(ngModel)]="box.background"/>
+  </div>
+  <div>
+    <div [ngStyle]="{
+      'width.px': box.width,
+      'height.px': box.height,
+      'background-color': box.background
+    }"></div>
+  </div>
+</div>
+<hr />
+<h1>Class and style binding</h1>
+<input type="text" required #nameInputGustavo="ngModel" [(ngModel)]="person.name"/>
+<p class="message-error" [class.invalidClassName]="nameInputGustavo.invalid">
+  The field is required
+</p>
+<label for="nameInputTest">Name</label>
+<input type="text" required #nameInputTest="ngModel" [(ngModel)]="person.name"/>
+<p [style.font-style]="nameInputTest.invalid ? italic : 'normal'">Text text text</p>
+<div class="simpleGrid">
+  <div>
+    <input type="number" [(ngModel)]="imageWidth"/>
+  </div>
+  <div>
+    <img [style.width.px]="imageWidth" [src]="person.avatar" alt="image" />
+  </div>
+</div>
+<hr />
+<h1>[ngSwitch] of Objects</h1>
+<div [ngSwitch]="color">
+  <p *ngSwitchCase="'blue'">
+    Blue color selected
+  </p>
+  <p *ngSwitchCase="'green'">
+    Green color selected
+  </p>
+  <p *ngSwitchCase="'red'">
+    Red color selected
+  </p>
+  <p *ngSwitchDefault>
+    No Color selected
+  </p>
+</div>
+<hr />
+<h1>*ngFor of Objects</h1>
+<div class="products--grid">
   <div *ngFor="let product of products">
-    <img [src]="product.image" alt="image" width="250" />
+    <img [src]="product.image" alt="image" />
     <h2>{{ product.price }}</h2>
     <p>{{ product.name }}</p>
   </div>
 </div>
-<hr>
+<hr />
 <h1>*ngFor</h1>
 <input type="text" minlength="3" required #newNameInput="ngModel" [(ngModel)]="newName" />
 <button (click)="addName()">Add Person</button>
@@ -24,7 +109,7 @@
     {{ i }} - {{ emoji }}
   </li>
 </ul>
-<hr>
+<hr />
 <h1>*ngIf</h1>
 <p>Name: {{person.name}}</p>
 <input type="text" required #nameInput="ngModel" [(ngModel)]="person.name" />
@@ -33,14 +118,14 @@
 <ng-template #myElseBlock>
   <p>Else block</p>
 </ng-template>
-<hr>
-<h1>ngModel</h1>
+<hr />
+<h1>[(ngModel)]</h1>
 <p>Name: {{person.name}}</p>
 <input type="text" required #nameInput="ngModel" [(ngModel)]="person.name" />
 <p>Valid Name: {{ nameInput.valid }}</p>
 <input type="number" min="18" max="100" #ageInput="ngModel" [(ngModel)]="person.age" />
 <p>Valid Age: {{ ageInput.valid }}</p>
-<hr>
+<hr />
 <h1>Events</h1>
 <button (click)="toggleButton()">Toggle Button</button>
 <button [disabled]="buttonDisabled">Send</button>
@@ -51,20 +136,20 @@
 </div>
 <input type="text" [value]="person.name" (keyup)="changeName($event)" />
 <p>Name: {{person.name}}</p>
-<hr>
+<hr />
 <h1>Properties binding</h1>
 <button [disabled]="buttonDisabled">Send</button>
 <input type="text" [value]="person.name" id="" />
 <progress max="100" [value]="person.age"></progress>
 <img width="100px" [src]="image" alt="imgage" />
-<hr>
+<hr />
 <h1>String interpolation</h1>
-<hr>
+<hr />
 <h1>Hello World! this is app</h1>
 <h2>{{ 'Hello world'.repeat(3) }}</h2>
 <p>
   3 + 3 = {{ 3 + 3 }}
 </p>
 <h3>Hello, my name is {{ name }} and I'm {{ age }} years old</h3>
-<img src="{{ image }}" alt="image">
+<img src="{{ image }}" alt="image" width="250">
 

@@ -25,6 +25,24 @@ export class AppComponent {
 
   newName = '';
 
+  color: string = 'red';
+
+  italic = 'italic';
+
+  imageWidth = 10;
+
+  box = {
+    width: 100,
+    height: 100,
+    background: 'red'
+  };
+
+  register = {
+    name: '',
+    email: '',
+    password: ''
+  }
+
   addName() {
     this.names.push(this.newName);
     this.newName = "";
@@ -92,5 +110,9 @@ export class AppComponent {
       price: 3434,
       image: './assets/images/glasses.jpg'
     }
-  ]
+  ];
+
+  onRegister() {
+    console.log(this.register);
+  }
 }
